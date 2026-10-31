@@ -22,9 +22,9 @@ const Navbar = () => {
   console.log(pathname);
 
   return (
-    <nav className="sticky top-0 z-50">
+    <nav className="sticky top-0 z-50 bg-white/80">
       <div
-        className="max-w-7xl mx-auto pt-2 relative"
+        className="max-w-7xl mx-auto pt-2 relative "
         // className="relative mx-auto max-w-[1600px] overflow-hidden rounded-[22px] border border-white/30 shadow-lg"
         // style={{
         //   backgroundImage: `
