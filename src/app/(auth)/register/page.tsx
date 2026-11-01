@@ -17,9 +17,13 @@ import {
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
 
 const RegisterPage = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect") || "/";
+
   const onSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -44,7 +48,7 @@ const RegisterPage = () => {
 
     if (data?.token) {
       toast.success("Account Creation Successfull");
-      redirect("/");
+      router.push(redirectTo);
     }
 
     if (error) {

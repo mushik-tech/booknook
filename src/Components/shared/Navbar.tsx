@@ -1,26 +1,34 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@heroui/react";
+import { Avatar, Button, Dropdown, Spinner, Label } from "@heroui/react";
 import { BookOpen } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
-
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "All Books", href: "/books" },
-  { name: "Add Book", href: "/add-books" },
-  { name: "My Books", href: "/my-books" },
-  { name: "My Borrows", href: "/my-borrows" },
-];
+import { authClient, useSession } from "@/lib/auth-client";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const pathname = usePathname();
 
-  console.log(pathname);
+  const { data: session, isPending } = useSession();
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "All Books", href: "/books" },
+  ];
+
+  if (session?.user) {
+    navLinks.push(
+      { name: "Add Book", href: "/add-books" },
+      { name: "My Books", href: "/my-books" },
+      { name: "My Borrows", href: "/my-borrows" },
+    );
+  }
+
+  // console.log(session);
 
   return (
     <nav className="sticky top-0 z-50 bg-white/80 dark:bg-black">
@@ -93,17 +101,66 @@ const Navbar = () => {
           {/* Authentication Actions */}
           <div className="flex items-center gap-2 ">
             <ThemeToggle />
-            <Link href={"/login"}>
-              <Button variant="primary" className="rounded-md ">
-                Login
-              </Button>
-            </Link>
 
-            <Link href={"/register"}>
-              <Button variant="outline" className="rounded-md hidden lg:flex">
-                Register
-              </Button>
-            </Link>
+            {isPending ? (
+              <Spinner></Spinner>
+            ) : session?.user ? (
+              <>
+                <Dropdown>
+                  <Button aria-label="Menu" variant="ghost">
+                    <Avatar>
+                      <Avatar.Image
+                        alt="John Doe"
+                        src={
+                          session?.user.image ||
+                          "https://img.heroui.chat/image/avatar?w=400&h=400&u=3"
+                        }
+                      />
+                      <Avatar.Fallback>JD</Avatar.Fallback>
+                    </Avatar>
+                  </Button>
+                  <Dropdown.Popover>
+                    <Dropdown.Menu>
+                      <Dropdown.Item>
+                        <Label>Hey!! {session?.user.name}</Label>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Label>My Profile</Label>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Button
+                          variant="danger"
+                          className="rounded-md w-full"
+                          onClick={() => {
+                            authClient.signOut();
+                            redirect("/login");
+                          }}
+                        >
+                          Logout
+                        </Button>
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown.Popover>
+                </Dropdown>
+              </>
+            ) : (
+              <>
+                <Link href={"/login"}>
+                  <Button variant="primary" className="rounded-md ">
+                    Login
+                  </Button>
+                </Link>
+
+                <Link href={"/register"}>
+                  <Button
+                    variant="outline"
+                    className="rounded-md hidden lg:flex"
+                  >
+                    Register
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
         </header>
 

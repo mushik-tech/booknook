@@ -16,9 +16,14 @@ import {
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const LoginPage = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const redirectTo = searchParams.get("redirect") || "/";
+
   const onSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -33,18 +38,18 @@ const LoginPage = () => {
     const { data, error } = await signIn.email({
       email: userData.email,
       password: userData.password,
-      rememberMe: true,
-      callbackURL: "/",
     });
-
-    if (data?.token) {
-      toast.success("Login Successfull");
-    }
 
     if (error) {
       toast.danger(error.message);
     }
+
+    if (data?.token) {
+      toast.success("Login Successfull");
+      router.push(redirectTo);
+    }
   };
+
   return (
     <div className="flex items-center justify-center rounded-3xl bg-surface p-6 my-16 max-w-xl mx-auto">
       <Surface className="min-w-95">
@@ -88,7 +93,10 @@ const LoginPage = () => {
 
         <p className="text-center text-sm">
           Don't have an account?
-          <Link className="underline text-sky-600" href={"/register"}>
+          <Link
+            className="underline text-sky-600"
+            href={`/register?redirect=${redirectTo}`}
+          >
             Register
           </Link>
         </p>

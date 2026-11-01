@@ -1,0 +1,23 @@
+import { NextRequest, NextResponse } from "next/server";
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
+
+export async function proxy(request: NextRequest) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  const pathname = request.nextUrl.pathname;
+
+  if (!session) {
+    return NextResponse.redirect(
+      new URL(`/login?redirect=${pathname}`, request.url),
+    );
+  }
+
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: ["/add-books", "/my-books", "/my-borrows"],
+};
