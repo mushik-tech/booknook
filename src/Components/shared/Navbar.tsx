@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { Button } from "@heroui/react";
-import { BookOpen, Menu, X, ArrowUpRight } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -22,24 +23,8 @@ const Navbar = () => {
   console.log(pathname);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80">
-      <div
-        className="max-w-7xl mx-auto pt-2 relative "
-        // className="relative mx-auto max-w-[1600px] overflow-hidden rounded-[22px] border border-white/30 shadow-lg"
-        // style={{
-        //   backgroundImage: `
-        //     linear-gradient(
-        //       100deg,
-        //       rgba(23, 43, 34, 0.70),
-        //       rgba(39, 63, 49, 0.42),
-        //       rgba(23, 43, 34, 0.65)
-        //     ),
-        //     url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2000&q=85')
-        //   `,
-        //   backgroundSize: "cover",
-        //   backgroundPosition: "center",
-        // }}
-      >
+    <nav className="sticky top-0 z-50 bg-white/80 dark:bg-black">
+      <div className="max-w-7xl mx-auto pt-2 relative ">
         {/* Main Navbar */}
         <header className="flex h-16 items-center justify-between px-6">
           <div className="flex items-center gap-4">
@@ -107,11 +92,12 @@ const Navbar = () => {
 
           {/* Authentication Actions */}
           <div className="flex items-center gap-2 ">
+            <ThemeToggle />
             <Button variant="primary" className="rounded-md ">
               Login
             </Button>
 
-            <Button variant="outline" className="rounded-md">
+            <Button variant="outline" className="rounded-md hidden lg:flex">
               Register
             </Button>
           </div>
@@ -134,6 +120,9 @@ const Navbar = () => {
                   </li>
                 ))}
               </ul>
+              <Button variant="primary" className="rounded-md mt-2 w-full">
+                Register
+              </Button>
             </div>
           </div>
         )}

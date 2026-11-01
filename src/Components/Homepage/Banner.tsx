@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import BannerSlider from "./BannerSlider";
-import { slides } from "../../../public/data/slides";
+import { slides } from "../../../public/data/data";
 
 const Banner = () => {
   return (

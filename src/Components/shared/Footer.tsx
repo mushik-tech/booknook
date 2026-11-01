@@ -8,7 +8,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="mt-20 border-t border-[#e5e5dc] bg-[#f2f1e9] text-[#293a32]">
+    <footer className="mt-20 border-t border-[#e5e5dc] bg-[#f2f1e9] dark:bg-black dark:border-gray-700 text-[#293a32]">
       <div className="mx-auto max-w-7xl px-6 pt-14 lg:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           {/* Brand */}
@@ -174,7 +174,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="mt-12 pb-8 border-t border-[#d8ded4] pt-6">
+      <div className="mt-12 pb-8 border-t border-[#d8ded4] dark:border-gray-700 pt-6">
         <p className="text-sm text-[#66736b] text-center">
           © {currentYear} BookNook. All rights reserved.
         </p>
