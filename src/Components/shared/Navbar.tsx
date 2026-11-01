@@ -93,13 +93,17 @@ const Navbar = () => {
           {/* Authentication Actions */}
           <div className="flex items-center gap-2 ">
             <ThemeToggle />
-            <Button variant="primary" className="rounded-md ">
-              Login
-            </Button>
+            <Link href={"/login"}>
+              <Button variant="primary" className="rounded-md ">
+                Login
+              </Button>
+            </Link>
 
-            <Button variant="outline" className="rounded-md hidden lg:flex">
-              Register
-            </Button>
+            <Link href={"/register"}>
+              <Button variant="outline" className="rounded-md hidden lg:flex">
+                Register
+              </Button>
+            </Link>
           </div>
         </header>
 

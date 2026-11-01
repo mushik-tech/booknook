@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/Components/shared/Navbar";
 import Footer from "@/Components/shared/Footer";
 import NextThemeProvider from "../providers/NextThemeProvider";
+import { ToastProvider } from "@heroui/react";
 
 const josefinSans = Josefin_Sans({
   variable: "--font-josefin-sans",
@@ -26,9 +27,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <NextThemeProvider>
           <Navbar></Navbar>
-          <main className="min-h-screen">{children}</main>
+          <main>{children}</main>
           <Footer></Footer>
         </NextThemeProvider>
+
+        <ToastProvider />
       </body>
     </html>
   );
