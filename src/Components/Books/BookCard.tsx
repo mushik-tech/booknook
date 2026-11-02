@@ -12,12 +12,12 @@ const BookCard = ({ book }: BookCardProps) => {
   return (
     <Card className="flex flex-row">
       {/* Book Image */}
-      <div className="aspect-9/12">
+      <div className="md:aspect-9/12">
         <Image
           src={book.image}
           alt={book.name}
-          width={200}
-          height={200}
+          width={160}
+          height={160}
           className=""
           loading="eager"
         />
