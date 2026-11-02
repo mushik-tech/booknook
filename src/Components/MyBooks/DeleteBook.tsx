@@ -29,7 +29,7 @@ const DeleteBook = ({ book }: { book: IBook }) => {
   return (
     <AlertDialog>
       <Button variant="danger" size="sm">
-        <TrashBin/>
+        <TrashBin />
         Delete
       </Button>
       <AlertDialog.Backdrop>

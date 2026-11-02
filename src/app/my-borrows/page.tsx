@@ -1,3 +1,4 @@
+import ReturnBorrowBook from "@/Components/Borrows/ReturnBorrowBook";
 import { auth } from "@/lib/auth";
 import { IBorrowBook } from "@/types/borrows.types";
 import { Button } from "@heroui/react";
@@ -59,7 +60,7 @@ const MyBorrowsPage = async () => {
           <h2 className="text-xl font-semibold">No books found</h2>
 
           <p className="mt-2 mb-3 text-default-500">
-            You have not added any books yet.
+            You have not borrowed any books yet.
           </p>
 
           <Link href={"/books"}>
@@ -108,7 +109,7 @@ const MyBorrowsPage = async () => {
 
                   <td className="px-5 py-4">
                     <div className="flex items-center justify-center gap-2">
-                      <Button>Return Book</Button>
+                      <ReturnBorrowBook borrowedBook={book} />
                     </div>
                   </td>
                 </tr>
