@@ -1,3 +1,4 @@
+import { Card } from "@heroui/react";
 import { borrowingSteps } from "../../../public/data/data";
 
 const HowBorrowingWorks = () => {
@@ -22,16 +23,16 @@ const HowBorrowingWorks = () => {
             const Icon = step.icon;
 
             return (
-              <article
+              <Card
                 key={step.number}
-                className="flex flex-col rounded-2xl border border-[#e5e7df] bg-white p-6 sm:p-7"
+                className="flex flex-col rounded-2xl border border-[#e5e7df] p-6 sm:p-7"
               >
                 {/* Number & Icon */}
                 <div className="flex items-center gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#edf3e9] text-[#3c5945] transition-all duration-300 group-hover:bg-[#293a32] group-hover:text-white">
                     <Icon size={23} />
                   </div>
-                  <h3 className="text-xl font-semibold dark:text-black">
+                  <h3 className="text-xl font-semibold">
                     {step.title}
                   </h3>
                 </div>
@@ -42,7 +43,7 @@ const HowBorrowingWorks = () => {
 
                 {/* Bottom Accent */}
                 <div className="mt-6 h-2 w-10 rounded-full bg-[#dce5d9]" />
-              </article>
+              </Card>
             );
           })}
         </div>

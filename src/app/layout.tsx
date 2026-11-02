@@ -31,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Footer></Footer>
         </NextThemeProvider>
 
-        <ToastProvider />
+        <ToastProvider placement="top"/>
       </body>
     </html>
   );
