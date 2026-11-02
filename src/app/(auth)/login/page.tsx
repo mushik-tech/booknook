@@ -1,6 +1,6 @@
 "use client";
 import { signIn } from "@/lib/auth-client";
-import { FloppyDisk } from "@gravity-ui/icons";
+import { ArrowRightToSquare } from "@gravity-ui/icons";
 import {
   Button,
   Description,
@@ -55,7 +55,7 @@ const LoginPage = () => {
       <Surface className="min-w-95">
         <Form onSubmit={onSubmit}>
           <Fieldset className="w-full">
-            <Fieldset.Legend>Login into Account</Fieldset.Legend>
+            <Fieldset.Legend className="text-2xl">Login into Account</Fieldset.Legend>
             <Description>Provide your profile information.</Description>
             <Fieldset.Group>
               {/* Email */}
@@ -65,15 +65,24 @@ const LoginPage = () => {
               </TextField>
 
               {/* Password */}
-              <TextField isRequired name="password" type="password">
+              <TextField
+                isRequired
+                name="password"
+                type="password"
+              >
                 <Label>Password</Label>
                 <Input placeholder="Enter your password" variant="secondary" />
+                <div className="flex justify-end">
+                  <Link href="/forgot-password" className="text-xs underline">
+                    Forgot Password?
+                  </Link>
+                </div>
               </TextField>
             </Fieldset.Group>
 
             <Fieldset.Actions>
               <Button type="submit" className="w-full">
-                <FloppyDisk />
+                <ArrowRightToSquare />
                 Login
               </Button>
             </Fieldset.Actions>

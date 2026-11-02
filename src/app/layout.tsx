@@ -29,9 +29,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Navbar></Navbar>
           <main>{children}</main>
           <Footer></Footer>
-        </NextThemeProvider>
 
-        <ToastProvider placement="top"/>
+          <ToastProvider placement="top" />
+        </NextThemeProvider>
       </body>
     </html>
   );

@@ -91,7 +91,7 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`${pathname === item.href ? "bg-[#dfe5d7]" : ""} rounded-xl px-3 py-3 text-sm font-semibold tracking-wide text-[#293a32] transition-all duration-300 hover:bg-[#dfe5d7] xl:px-4`}
+                className={`${pathname === item.href ? "bg-[#dfe5d7]" : ""} rounded-lg px-3 py-2 text-sm font-semibold text-[#293a32] hover:bg-[#dfe5d7] xl:px-4`}
               >
                 {item.name}
               </Link>

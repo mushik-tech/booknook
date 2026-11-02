@@ -1,6 +1,6 @@
 "use client";
 import { signUp } from "@/lib/auth-client";
-import { FloppyDisk } from "@gravity-ui/icons";
+import {PersonPlus} from '@gravity-ui/icons';
 import {
   Button,
   Description,
@@ -61,7 +61,7 @@ const RegisterPage = () => {
       <Surface className="min-w-95">
         <Form onSubmit={onSubmit}>
           <Fieldset className="w-full">
-            <Fieldset.Legend>Register Account</Fieldset.Legend>
+            <Fieldset.Legend className="text-2xl">Register Account</Fieldset.Legend>
             <Description>Provide your profile information.</Description>
             <Fieldset.Group>
               {/* Name */}
@@ -142,7 +142,7 @@ const RegisterPage = () => {
 
             <Fieldset.Actions>
               <Button type="submit" className="w-full">
-                <FloppyDisk />
+                <PersonPlus />
                 Register
               </Button>
             </Fieldset.Actions>
