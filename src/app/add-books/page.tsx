@@ -2,7 +2,7 @@
 import { useSession } from "@/lib/auth-client";
 import { uploadImage } from "@/utilities/uploadImage";
 import { FloppyDisk } from "@gravity-ui/icons";
-import {FolderPlus} from '@gravity-ui/icons';
+import { FolderPlus } from "@gravity-ui/icons";
 import {
   Button,
   Description,
@@ -96,13 +96,15 @@ const AddBookPage = () => {
                 <FieldError />
               </TextField>
 
-              <TextField isRequired name="copies" className="w-full">
-                <Label>Total Copies</Label>
-                <Input
-                  placeholder="Total copies"
-                  variant="secondary"
-                  type="number"
-                />
+              {/* Author */}
+              <TextField
+                isRequired
+                type="text"
+                name="author"
+                className="w-full"
+              >
+                <Label>Author Name</Label>
+                <Input placeholder="Enter author name" variant="secondary" />
                 <FieldError />
               </TextField>
 
@@ -151,15 +153,23 @@ const AddBookPage = () => {
                 </Select.Popover>
               </Select>
 
-              {/* Author */}
               <TextField
                 isRequired
-                type="text"
-                name="author"
+                name="copies"
                 className="w-full"
+                validate={(value) => {
+                  if (Number(value) < 0) {
+                    return "Copies need to be postive";
+                  }
+                  return null;
+                }}
               >
-                <Label>Author Name</Label>
-                <Input placeholder="Enter author name" variant="secondary" />
+                <Label>Total Copies</Label>
+                <Input
+                  placeholder="Total copies"
+                  variant="secondary"
+                  type="number"
+                />
                 <FieldError />
               </TextField>
 

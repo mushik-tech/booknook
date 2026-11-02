@@ -1,7 +1,7 @@
 export interface IBook {
   _id: string;
   name: string;
-  copies: string;
+  copies: number;
   category: "fiction" | "science" | "history" | "kids" | "others";
   author: string;
   image: string;

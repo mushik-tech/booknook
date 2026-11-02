@@ -2,8 +2,8 @@ import { IBook } from "@/types/book.types";
 import Image from "next/image";
 import { Button, Card } from "@heroui/react";
 import Link from "next/link";
-import BorrowButton from "@/Components/Books/BorrowButton";
 import { CircleXmark } from "@gravity-ui/icons";
+import BorrowButton from "@/Components/Borrows/BorrowButton";
 
 const getSingleBooks = async (id: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/books/${id}`, {
@@ -120,11 +120,11 @@ const BookDetailsPage = async ({
           </div>
 
           {/* Borrow Button */}
-          <div className="flex gap-10">
+          <div className="flex gap-3 md:gap-10 flex-col md:flex-row">
             <BorrowButton book={book} />
 
             {/* Available Copies */}
-            <div className="flex items-center gap-3 border rounded-2xl px-4 dark:border-slate-800">
+            <div className="flex items-center gap-3 border rounded-2xl py-2 md:py-0 px-4 dark:border-slate-800">
               <span className="text-base text-gray-500 dark:text-white">
                 Available Copies
               </span>

@@ -82,7 +82,7 @@ const UpdateBook = ({ book }: { book: IBook }) => {
   return (
     <Modal>
       <Button variant="primary" size="sm">
-        <PencilToSquare/>
+        <PencilToSquare />
         Edit
       </Button>
       <Modal.Backdrop>
@@ -178,7 +178,13 @@ const UpdateBook = ({ book }: { book: IBook }) => {
                       <TextField
                         name="copies"
                         className="w-full"
-                        defaultValue={book.copies}
+                        defaultValue={String(book.copies)}
+                        validate={(value) => {
+                          if (Number(value) < 0) {
+                            return "Copies need to be postive";
+                          }
+                          return null;
+                        }}
                       >
                         <Label>Total Copies</Label>
                         <Input
@@ -186,6 +192,7 @@ const UpdateBook = ({ book }: { book: IBook }) => {
                           variant="secondary"
                           type="number"
                         />
+                        <FieldError />
                       </TextField>
 
                       {/* Photo URL */}
