@@ -89,7 +89,7 @@ const AddBookPage = () => {
                 isRequired
                 type="text"
                 name="name"
-                className="w-full col-span-2"
+                className="w-full md:col-span-2"
               >
                 <Label>Book Title</Label>
                 <Input placeholder="Enter book title" variant="secondary" />

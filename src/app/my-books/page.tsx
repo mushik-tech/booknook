@@ -3,9 +3,15 @@ import UpdateBook from "@/Components/MyBooks/UpdateBook";
 import { auth } from "@/lib/auth";
 import type { IBook } from "@/types/book.types";
 import { Button } from "@heroui/react";
+import { Metadata } from "next";
 import { headers } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: "BookNook | My Books",
+  description: "Browse Book By it's category",
+};
 
 const getMyBooks = async (email: string) => {
   const res = await fetch(
@@ -59,9 +65,13 @@ const MyBooksPage = async () => {
         <div className="rounded-2xl border border-dashed p-10 text-center sm:p-16">
           <h2 className="text-xl font-semibold">No books found</h2>
 
-          <p className="mt-2 text-default-500">
+          <p className="mt-2 mb-3 text-default-500">
             You have not added any books yet.
           </p>
+
+          <Link href={'/add-books'}>
+            <Button>Add Books</Button>
+          </Link>
         </div>
       ) : (
         <div className="overflow-x-auto rounded-2xl border">
@@ -94,8 +104,8 @@ const MyBooksPage = async () => {
 
                   <td className="px-5 py-4">
                     <div className="flex items-center justify-center gap-2">
-                      <UpdateBook></UpdateBook>
-                      <DeleteBook></DeleteBook>
+                      <UpdateBook book={book}></UpdateBook>
+                      <DeleteBook book={book}></DeleteBook>
                     </div>
                   </td>
                 </tr>
