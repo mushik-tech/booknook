@@ -27,7 +27,6 @@ const getMyBooks = async (email: string) => {
 
   const result = await res.json();
 
-  // Supports either { data: [...] } or a direct array response.
   return result;
 };
 
