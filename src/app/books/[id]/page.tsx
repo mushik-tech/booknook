@@ -6,30 +6,40 @@ import { CircleXmark } from "@gravity-ui/icons";
 import BorrowButton from "@/Components/Borrows/BorrowButton";
 
 import type { Metadata, ResolvingMetadata } from "next";
+import { getTokenFromServer } from "@/lib/getTokenFromServer";
 
 type Props = {
   params: Promise<{ id: string }>;
 };
 
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const { id } = await params;
+// export async function generateMetadata(
+//   { params }: Props,
+//   parent: ResolvingMetadata,
+// ): Promise<Metadata> {
+//   const { id } = await params;
+//   const token = await getTokenFromServer();
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/books/${id}`);
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/books/${id}`, {
+//     headers: {
+//       authorization: `Bearer ${token}`,
+//     },
+//   });
 
-  const { data: book } = await res.json();
+//   const { data: book } = await res.json();
 
-  return {
-    title: `BookNook | ${book.name}`,
-    description: book.bio,
-  };
-}
+//   return {
+//     title: `BookNook | ${book.name}`,
+//     description: book.bio,
+//   };
+// }
 
 const getSingleBooks = async (id: string) => {
+  const token = await getTokenFromServer();
+
   const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/books/${id}`, {
-    cache: "no-store",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
   });
 
   if (!res.ok) {

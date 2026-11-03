@@ -8,6 +8,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { Metadata } from "next";
+import { getTokenFromServer } from "@/lib/getTokenFromServer";
 
 export const metadata: Metadata = {
   title: "BookNook | Borrows Book",
@@ -15,10 +16,14 @@ export const metadata: Metadata = {
 };
 
 const getMyBorrowedBooks = async (email: string) => {
+  const token = await getTokenFromServer();
+
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API}/api/borrows?email=${email}`,
     {
-      cache: "no-store",
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
     },
   );
 

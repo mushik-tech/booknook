@@ -1,5 +1,6 @@
 "use client";
 import { useSession } from "@/lib/auth-client";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 import { uploadImage } from "@/utilities/uploadImage";
 import { FolderPlus } from "@gravity-ui/icons";
 import {
@@ -38,10 +39,13 @@ const AddBook = () => {
       >;
       bookData.image = imageUrl;
 
+      const token = await getTokenFromClient();
+
       const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/books`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
+          authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(bookData),
       });

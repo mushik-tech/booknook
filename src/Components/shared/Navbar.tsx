@@ -133,7 +133,7 @@ const Navbar = () => {
                           className="rounded-md w-full"
                           onClick={() => {
                             authClient.signOut();
-                            redirect("/a");
+                            redirect("/");
                           }}
                         >
                           Logout

@@ -21,6 +21,7 @@ import { IBook } from "@/types/book.types";
 import React, { useState } from "react";
 import { uploadImage } from "@/utilities/uploadImage";
 import { useRouter } from "next/navigation";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 const UpdateBook = ({ book }: { book: IBook }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -50,12 +51,15 @@ const UpdateBook = ({ book }: { book: IBook }) => {
       >;
       bookData.image = imageUrl;
 
+      const token = await getTokenFromClient();
+
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API}/api/books/${book._id}`,
         {
           method: "PATCH",
           headers: {
             "content-type": "application/json",
+            authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(bookData),
         },

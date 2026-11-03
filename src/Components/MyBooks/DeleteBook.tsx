@@ -1,5 +1,6 @@
 "use client";
 
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 import { IBook } from "@/types/book.types";
 import { TrashBin } from "@gravity-ui/icons";
 import { AlertDialog, Button, toast } from "@heroui/react";
@@ -9,10 +10,15 @@ const DeleteBook = ({ book }: { book: IBook }) => {
   const router = useRouter();
 
   const handleBookDelete = async () => {
+    const token = await getTokenFromClient();
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API}/api/books/${book._id}`,
       {
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       },
     );
     const data = await res.json();

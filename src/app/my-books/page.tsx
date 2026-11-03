@@ -1,6 +1,7 @@
 import DeleteBook from "@/Components/MyBooks/DeleteBook";
 import UpdateBook from "@/Components/MyBooks/UpdateBook";
 import { auth } from "@/lib/auth";
+import { getTokenFromServer } from "@/lib/getTokenFromServer";
 import type { IBook } from "@/types/book.types";
 import { Button } from "@heroui/react";
 import { Metadata } from "next";
@@ -14,10 +15,14 @@ export const metadata: Metadata = {
 };
 
 const getMyBooks = async (email: string) => {
+  const token = await getTokenFromServer();
+
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API}/api/my-books/${email}`,
     {
-      cache: "no-store",
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
     },
   );
 
@@ -68,7 +73,7 @@ const MyBooksPage = async () => {
             You have not added any books yet.
           </p>
 
-          <Link href={'/add-books'}>
+          <Link href={"/add-books"}>
             <Button>Add Books</Button>
           </Link>
         </div>

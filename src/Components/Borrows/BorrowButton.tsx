@@ -8,6 +8,7 @@ import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import { useState } from "react";
 import { useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 interface BorrowButtonProps {
   book: IBook;
@@ -30,9 +31,14 @@ const BorrowButton = ({ book }: BorrowButtonProps) => {
         userEmail: session?.user.email,
       };
 
+      const token = await getTokenFromClient();
+
       const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/borrows`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(borrowInfo),
       });
 

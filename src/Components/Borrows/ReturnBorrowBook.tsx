@@ -1,4 +1,5 @@
 "use client";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 import { IBorrowBook } from "@/types/borrows.types";
 import { AlertDialog, Button, toast } from "@heroui/react";
 import { useRouter } from "next/navigation";
@@ -7,10 +8,15 @@ const ReturnBorrowBook = ({ borrowedBook }: { borrowedBook: IBorrowBook }) => {
   const router = useRouter();
 
   const handleReturnBook = async () => {
+    const token = await getTokenFromClient();
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API}/api/borrows/${borrowedBook._id}`,
       {
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
       },
     );
     const data = await res.json();
@@ -46,7 +52,11 @@ const ReturnBorrowBook = ({ borrowedBook }: { borrowedBook: IBorrowBook }) => {
               <Button slot="close" variant="tertiary">
                 Not Yet
               </Button>
-              <Button slot="close" variant={"primary"} onClick={handleReturnBook}>
+              <Button
+                slot="close"
+                variant={"primary"}
+                onClick={handleReturnBook}
+              >
                 Return Book
               </Button>
             </AlertDialog.Footer>
