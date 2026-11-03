@@ -32,7 +32,7 @@ const LoginForm = () => {
       password: string;
     };
 
-    console.log(userData);
+    // console.log(userData);
 
     const { data, error } = await signIn.email({
       email: userData.email,

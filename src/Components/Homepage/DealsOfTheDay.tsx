@@ -9,7 +9,7 @@ const DealsOfTheDay = () => {
       <div className="mx-auto max-w-7xl">
         {/* Section Heading */}
         <div className="mb-10 lg:mb-0">
-          <h2 className="text-xl font-bold uppercase t sm:text-2xl">
+          <h2 className="text-xl font-bold uppercase sm:text-2xl">
             Deals of the Day
           </h2>
         </div>
@@ -84,20 +84,19 @@ const DealsOfTheDay = () => {
           </div>
 
           {/* Featured Product Image */}
-          <div>
+          <div className="border-[#20aaa9] border-2">
             <Link
               href="/books"
               aria-label="Explore Sprite Yoga Straps"
-              className="group flex h-95 items-center justify-center border-2 p-8 border-[#20aaa9] sm:h-120 lg:h-140 lg:p-12 dark:border-gray-700"
+              className="group flex h-95 items-center justify-center md:h-120 lg:h-135 dark:border-gray-700"
             >
-              <div className="relative h-full w-full max-w-[320px] transition-transform duration-500 hover:scale-[1.03]">
-                <Image
-                  src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e"
-                  alt="Sprite Yoga Straps"
-                  fill
-                  className="object-contain drop-shadow-2xl"
-                />
-              </div>
+              <Image
+                src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e"
+                alt="Sprite Yoga Straps"
+                height={300}
+                width={280}
+                className="object-contain drop-shadow-2xl h-auto w-auto"
+              />
             </Link>
           </div>
 

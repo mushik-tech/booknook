@@ -125,7 +125,7 @@ const Navbar = () => {
                         <Label>Hey!! {session?.user.name}</Label>
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <Label>My Profile</Label>
+                        <Link href={"/my-profile"}>My Profile</Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
                         <Button

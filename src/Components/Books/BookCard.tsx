@@ -8,16 +8,16 @@ export interface BookCardProps {
 }
 
 const BookCard = ({ book }: BookCardProps) => {
-
   return (
     <Card className="flex flex-row">
       {/* Book Image */}
-      <div className="md:aspect-9/12">
+      <div className="relative aspect-9/12 overflow-hidden">
         <Image
           src={book.image}
           alt={book.name}
-          width={160}
-          height={160}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-cover"
           loading="eager"
         />
 

@@ -33,35 +33,35 @@ export const slides = [
 export const products = [
   {
     id: 1,
-    name: "Rival Messenger",
+    name: "On the Origin of Species",
     price: 40,
     oldPrice: 45,
     image:
-      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=500&q=85",
+      "https://i.pinimg.com/474x/fb/ef/77/fbef77097f21e64f72f4204d92a5313e.jpg",
   },
   {
     id: 2,
-    name: "Voyage Yoga Bag",
+    name: "The Double Helix",
     price: 30,
     oldPrice: 32,
     image:
-      "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=500&q=85",
+      "https://i.pinimg.com/736x/3b/4b/3b/3b4b3bd8bb29ab324adfceb0efa1f458.jpg",
   },
   {
     id: 3,
-    name: "Impulse Duffle",
+    name: "The Selfish Gene",
     price: 70,
     oldPrice: 74,
     image:
-      "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=500&q=85",
+      "https://i.pinimg.com/1200x/a7/45/1d/a7451d52666f9e4f45929c0b76162965.jpg",
   },
   {
     id: 4,
-    name: "Compete Track Tote",
+    name: "A Brief History of Time",
     price: 32,
     oldPrice: 36,
     image:
-      "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=500&q=85",
+      "https://i.pinimg.com/736x/0e/4a/3b/0e4a3b402a182777a4b3420efbf64be3.jpg",
   },
 ];
 
