@@ -18,9 +18,13 @@ const Footer = () => {
               className="inline-flex items-center gap-2"
               aria-label="BookNook homepage"
             >
-              <BookOpen size={30} strokeWidth={1.7} />
+              <BookOpen
+                size={30}
+                strokeWidth={1.7}
+                className="dark:text-white"
+              />
 
-              <span className="text-2xl font-semibold tracking-tight">
+              <span className="text-2xl font-semibold dark:text-white">
                 BookNook
               </span>
             </Link>
@@ -33,9 +37,6 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex items-center gap-3 pt-1">
               <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label="Facebook"
                 className="rounded-full border border-[#d8ded4] p-2.5 transition-all duration-300 hover:border-[#293a32] hover:bg-[#293a32] hover:text-white"
               >
@@ -43,9 +44,6 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="rounded-full border border-[#d8ded4] p-2.5 transition-all duration-300 hover:border-[#293a32] hover:bg-[#293a32] hover:text-white"
               >
@@ -53,11 +51,8 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://x.com"
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label="X"
-                className="rounded-full border border-[#d8ded4] p-2.5 transition-all duration-300 hover:border-[#293a32] hover:bg-[#293a32] hover:text-white"
+                className="rounded-full dark:bg-white border border-[#d8ded4] p-2.5 transition-all duration-300 hover:border-[#293a32] hover:bg-[#293a32] hover:text-white"
               >
                 <Icon icon="devicon:twitter" />
               </a>
@@ -66,7 +61,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="mb-5 text-sm font-bold uppercase tracking-widest">
+            <h3 className="mb-5 text-sm font-bold uppercase dark:text-white">
               Explore
             </h3>
 
@@ -120,7 +115,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="mb-5 text-sm font-bold uppercase tracking-widest">
+            <h3 className="mb-5 text-sm font-bold uppercase dark:text-white">
               Get in Touch
             </h3>
 
@@ -154,7 +149,7 @@ const Footer = () => {
 
           {/* Newsletter / CTA */}
           <div>
-            <h3 className="mb-5 text-sm font-bold uppercase tracking-widest">
+            <h3 className="mb-5 text-sm font-bold uppercase dark:text-white">
               Keep Exploring
             </h3>
 
@@ -164,7 +159,7 @@ const Footer = () => {
 
             <Link
               href="/books"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#293a32] px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#3c5145] hover:shadow-lg"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#293a32] dark:bg-black dark:border-2 px-5 py-3 text-sm font-semibold text-white"
             >
               Discover Books
               <ArrowUpRight size={16} />

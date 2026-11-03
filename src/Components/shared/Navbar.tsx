@@ -107,7 +107,7 @@ const Navbar = () => {
             ) : session?.user ? (
               <>
                 <Dropdown>
-                  <Button aria-label="Menu" variant="ghost">
+                  <Dropdown.Trigger>
                     <Avatar>
                       <Avatar.Image
                         alt="John Doe"
@@ -118,7 +118,7 @@ const Navbar = () => {
                       />
                       <Avatar.Fallback>JD</Avatar.Fallback>
                     </Avatar>
-                  </Button>
+                  </Dropdown.Trigger>
                   <Dropdown.Popover>
                     <Dropdown.Menu>
                       <Dropdown.Item>
@@ -133,7 +133,7 @@ const Navbar = () => {
                           className="rounded-md w-full"
                           onClick={() => {
                             authClient.signOut();
-                            redirect("/login");
+                            redirect("/a");
                           }}
                         >
                           Logout

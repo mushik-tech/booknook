@@ -5,6 +5,28 @@ import Link from "next/link";
 import { CircleXmark } from "@gravity-ui/icons";
 import BorrowButton from "@/Components/Borrows/BorrowButton";
 
+import type { Metadata, ResolvingMetadata } from "next";
+
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const { id } = await params;
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/books/${id}`);
+
+  const { data: book } = await res.json();
+
+  return {
+    title: `BookNook | ${book.name}`,
+    description: book.bio,
+  };
+}
+
 const getSingleBooks = async (id: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/books/${id}`, {
     cache: "no-store",
@@ -19,11 +41,7 @@ const getSingleBooks = async (id: string) => {
   return data;
 };
 
-const BookDetailsPage = async ({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) => {
+const BookDetailsPage = async ({ params }: Props) => {
   const { id } = await params;
 
   const bookInfo = await getSingleBooks(id);

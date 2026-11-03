@@ -1,7 +1,12 @@
 import BookCard from "@/Components/Books/BookCard";
 import EmptyBooks from "@/Components/Books/EmptyBooks";
 import { IBook } from "@/types/book.types";
-import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "BookNook | All Books",
+  description: "Browse Book By it's category",
+};
 
 const getAllBooks = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/books`);
@@ -26,7 +31,9 @@ const AllBooksPage = async () => {
         </div>
 
         <div className="flex items-center gap-2 rounded-full bg-white dark:bg-black dark:border-2 px-4 py-2 shadow-sm">
-          <span className="text-sm text-gray-500 dark:text-white">Total Books</span>
+          <span className="text-sm text-gray-500 dark:text-white">
+            Total Books
+          </span>
           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#f2f1e9] px-2 text-sm font-bold text-gray-900">
             {books.length}
           </span>

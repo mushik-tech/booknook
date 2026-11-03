@@ -7,6 +7,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "BookNook | Borrows Book",
+  description: "Browse Book By it's category",
+};
+
 const getMyBorrowedBooks = async (email: string) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API}/api/borrows?email=${email}`,

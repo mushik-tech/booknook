@@ -18,7 +18,6 @@ const BookCard = ({ book }: BookCardProps) => {
           alt={book.name}
           width={160}
           height={160}
-          className=""
           loading="eager"
         />
 

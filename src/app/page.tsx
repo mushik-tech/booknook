@@ -3,8 +3,6 @@ import CTA from "@/Components/Homepage/CTA";
 import DealsOfTheDay from "@/Components/Homepage/DealsOfTheDay";
 import HowBorrowingWorks from "@/Components/Homepage/HowBorrowingWorks";
 import NewArrival from "@/Components/Homepage/NewArrival";
-import { Button } from "@heroui/react";
-
 export default function Home() {
   return (
     <div>
