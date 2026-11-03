@@ -4,14 +4,16 @@ import { useState } from "react";
 import { Avatar, Button, Dropdown, Spinner, Label } from "@heroui/react";
 import { BookOpen } from "lucide-react";
 import Link from "next/link";
-import { redirect, usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
 import { authClient, useSession } from "@/lib/auth-client";
+import { useRouter, usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const pathname = usePathname();
+
+  const router = useRouter();
 
   const { data: session, isPending } = useSession();
 
@@ -131,9 +133,10 @@ const Navbar = () => {
                         <Button
                           variant="danger"
                           className="rounded-md w-full"
-                          onClick={() => {
-                            authClient.signOut();
-                            redirect("/");
+                          onClick={async () => {
+                            await authClient.signOut();
+                            router.replace("/login");
+                            router.refresh();
                           }}
                         >
                           Logout

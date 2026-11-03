@@ -2,7 +2,7 @@
 
 A community-driven book borrowing platform where readers discover new titles, share books from their own shelves, and manage their borrows — all in one place.
 
-**Live Site:** [https://your-live-site-url](https://your-live-site-url)
+**Live Site:** https://booknook-hazel-nine.vercel.app
 
 
 ## Features

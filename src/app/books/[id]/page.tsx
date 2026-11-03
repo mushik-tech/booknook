@@ -27,6 +27,8 @@ type Props = {
 
 //   const { data: book } = await res.json();
 
+//   console.log(book);
+
 //   return {
 //     title: `BookNook | ${book.name}`,
 //     description: book.bio,
@@ -35,7 +37,6 @@ type Props = {
 
 const getSingleBooks = async (id: string) => {
   const token = await getTokenFromServer();
-
   const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/books/${id}`, {
     headers: {
       authorization: `Bearer ${token}`,
